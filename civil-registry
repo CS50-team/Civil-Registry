@@ -1,0 +1,93 @@
+#include <stdio.h>
+#include <cs50.h>
+#include <string.h>
+
+void queryname();
+void rerun();
+
+typedef struct {
+    string name;
+    string location;
+    string phone;
+    string email;
+    string id;
+    string address;
+}mohamed;
+
+int main(void)
+{
+    int choice;
+
+    printf("\n\t\t\t-----------------------------------------------------------------------\n");
+    printf("\t\t\t\t[ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]\n");
+    printf("\t\t\t-----------------------------------------------------------------------\n");
+    printf("\t\t\t\t[ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]\n");
+    printf("\t\t\t-----------------------------------------------------------------------\n");
+    printf("\t\t\t\t\t\t    Civil Registry\n\n\t\t\t\t\t\t\b   by Mohamed Mostafa\n");
+    printf("\t\t\t-----------------------------------------------------------------------\n");
+    printf("\t\t\t\t[ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]\n");
+    printf("\t\t\t-----------------------------------------------------------------------\n");
+    printf("\t\t\t\t[ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]\n");
+    printf("\t\t\t-----------------------------------------------------------------------\n");
+    printf("\n\n[1] Search For A Citizen.\n\n[0] Exit.\n\n");
+
+    do
+    {
+        choice = get_int("\n[*] Select: ");
+        if(choice == 1)
+        {
+            queryname();
+        }
+        else if(choice == 0)
+        {
+            printf("\n[X] Civil Registry Has Been Terminated.\n\n");
+            return 0;
+        }
+
+    }while(choice > 1 || choice < 0);
+
+}
+
+
+void queryname()
+{
+    string input;
+
+    input = get_string("\n\n[!] Enter Citizen Name: ");
+
+    mohamed usersdata[5];
+
+    usersdata[0].name = "abdelrahman";usersdata[0].location = "Cairo Egypt";usersdata[0].phone = "01112223330";usersdata[0].email = "abdelrahman.mohamed3123@gmail.com";usersdata[0].id = "29721211221121";usersdata[0].address = "Andalus Tower Behinde Military Hospital, MAADI";
+    usersdata[1].name = "mohamed";usersdata[1].location = "Alexandria Egypt";usersdata[1].phone = "01051552121";usersdata[1].email = "mohamed.ashraf32132@gmail.com";usersdata[1].id = "29212123232344";usersdata[1].address = "Km. 17 Omzeghue Rd., AGAMI";
+    usersdata[2].name = "ahmed";usersdata[2].location = "Giza Egypt";usersdata[2].phone = "01252121221";usersdata[2].email = "ahmed.15441@yahoo.com";usersdata[2].id = "28214324324335";usersdata[2].address = "131 El Tahrir St., DOKKI";
+    usersdata[3].name = "seliman";usersdata[3].location = "Dokki Egypt";usersdata[3].phone = "01532121121";usersdata[3].email = "seliman.saeed231123@outlook.com";usersdata[3].id = "28610005523232";usersdata[3].address = "10 A Hussein Wassef St., Messaha Sq.";
+    usersdata[4].name = "mostafa";usersdata[4].location = "Damietta Egypt";usersdata[4].phone = "012265121100";usersdata[4].email = "mostafa.ahmed2220@gmail.com";usersdata[4].id = "26812322132434";usersdata[4].address = "El-Kayass Sq., Damietta";
+
+    for(int x = 0; x < 5;x++)
+    {
+        if(strcmp(usersdata[x].name,input) == 0)
+        {
+            printf("\n-------------------------------------------------------------------------------------------\n");
+            printf("[!] *Citizen Found*\n-------------------------------------------------------------------------------------------\nLocation: %s\n-------------------------------------------------------------------------------------------\nPhone Number: %s\n-------------------------------------------------------------------------------------------\nEmail: %s\n-------------------------------------------------------------------------------------------\nHome Address: %s\n-------------------------------------------------------------------------------------------\nNational ID Number: %s\n",usersdata[x].location,usersdata[x].phone,usersdata[x].email,usersdata[x].address,usersdata[x].id);
+            printf("-------------------------------------------------------------------------------------------\n");
+            rerun();
+        }
+    }
+}
+
+void rerun(void)
+{
+    char q;
+    do
+    {
+        q = get_char("\n[?] Do You Wanna Search Again? (Y => Continue / N => Exit): ");
+        if(q == 'Y' || q == 'y')
+        {
+            queryname();
+        }
+        else if(q == 'N' || q == 'n')
+        {
+            printf("\n[X] Civil Registry Has Been Terminated.\n\n");
+        }
+    }while(q != 'Y' && q != 'y' && q != 'N' && q != 'n');
+}
